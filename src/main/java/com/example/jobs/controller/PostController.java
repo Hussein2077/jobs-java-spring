@@ -2,10 +2,12 @@ package com.example.jobs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import com.example.jobs.repo.PostRepository;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.servlet.http.HttpServletResponse;
 import com.example.jobs.model.Post;
 
@@ -24,5 +26,13 @@ public class PostController {
     public  List<Post>   getPosts() {
         return  repo.findAll();
     }
+    // add post
+  @PostMapping("/post")
+ 
+    public Post addPost(@RequestBody Post post)
+    {
+        return repo.save(post);
+    }
+
     
 }
